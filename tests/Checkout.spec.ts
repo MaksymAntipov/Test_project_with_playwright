@@ -12,19 +12,14 @@ test.beforeEach(async ({page})=>{
 
    await homePage.openPage()
     await homePage.addToCartFirstBook();
-    await homePage.iconCart.click();
+    await homePage.header.iconCart.click();
     await homePage.buttonGoToCheckout.click();
 })
 
 test('PaymentCartWithoutAuth', async ({page})=>{
-    await checkout.inputPhoneNumber.fill(testData.phoneNumber);
+    await checkout.fillContactForm(testData.phoneNumber,testData.email,testData.contactFirstName, testData.contactLastName)
     await expect(checkout.inputPhoneNumber).toHaveValue(`+380${testData.phoneNumber}`);
-    await checkout.inputEmail.fill(testData.email);
-    await expect(checkout.inputEmail).toHaveValue(testData.email);
-    await checkout.inputContactFirstName.fill(testData.contactFirstName);
-    await expect(checkout.inputContactFirstName).toHaveValue(testData.contactFirstName);
-    await checkout.inputContactLastName.fill(testData.contactLastName);
-    await expect(checkout.inputContactLastName).toHaveValue(testData.contactLastName);
+    
     await checkout.selectedDeliveryMethodWarehouse.scrollIntoViewIfNeeded();
     await checkout.selectedDeliveryMethodWarehouse.click();
     await checkout.inputCity.click();

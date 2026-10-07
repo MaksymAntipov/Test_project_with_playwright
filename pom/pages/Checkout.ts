@@ -32,18 +32,17 @@ export class Checkout{
         this.selectFirstWarehouseInWarehouseList = page.getByRole('option').first();
         this.paymentMethodCard = page.getByLabel('Карткою онлайн');
         this.buttonCreatedOrder = page.getByRole('button',{name:"Оформити замовлення"});
+        }
 
-
-
-
-
-
-
-
+        async fillContactForm(phoneNumber:string, email:string, firstName:string, lastName: string){
+            await this.inputPhoneNumber.fill(phoneNumber);
+            await this.inputEmail.fill(email);
+            await this.inputContactFirstName.fill(firstName);
+            await this.inputContactLastName.fill(lastName);
+        }
 
 
     }
-}
 
 
 
