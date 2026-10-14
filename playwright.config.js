@@ -2,10 +2,8 @@
 import { defineConfig, devices } from '@playwright/test';
 import { ENVIRONMENTS, DEFAULT_ENV } from './config/env';
 
-// 1. Берем ключ из терминала (ENV), а если его не передали — берем 'dev' из DEFAULT_ENV
 const currentEnv = process.env.ENV || DEFAULT_ENV;
 
-// 2. Достаем полноценный URL из карты по нашему ключу ('dev' -> 'https://web.dev.mbooks.net')
 const targetBaseURL = ENVIRONMENTS[currentEnv];
 
 /**
