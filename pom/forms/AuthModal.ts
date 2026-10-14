@@ -6,6 +6,7 @@ export class AuthModal{
     public buttonGetOtpCode: Locator;
     public inputOtpCode: Locator;
     public buttonConfirm: Locator;
+    public errorContainer: Locator;
 
     constructor(page: Page){
         this.buttonSignIn = page.getByRole('button',{name:"Увійти"});
@@ -13,6 +14,7 @@ export class AuthModal{
         this.buttonGetOtpCode = page.getByRole('button',{name:'Отримати код'});
         this.inputOtpCode = page.getByPlaceholder('* * * *');
         this.buttonConfirm = page.getByRole('button',{name:"Підтвердити"});
+        this.errorContainer = page.locator("//span[contains(@class, 'inline-block')]")
     }
 
 

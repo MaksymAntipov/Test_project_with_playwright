@@ -34,7 +34,7 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    {name: 'setup', testMatch:'**/*.setup.ts'},
+    //{name: 'setup', testMatch:'**/*.setup.ts'},
     {
       name: 'chromium',
       use: { 
@@ -47,8 +47,7 @@ export default defineConfig({
         launchOptions: {
           args: ['--disable-web-security']
         }
-      },
-        dependencies:['setup']
+      }//, dependencies:['setup']
     },
 
     // {
