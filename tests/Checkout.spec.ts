@@ -16,6 +16,7 @@ test.beforeEach(async ({ page }) => {
   await homePage.header.iconCart.click();
   await homePage.buttonGoToCheckout.click();
 });
+
 test.describe('Checkout: guest', () => {
   test('PaymentCartWithoutAuth', async ({ page }) => {
     await checkout.fillContactForm(
@@ -25,7 +26,6 @@ test.describe('Checkout: guest', () => {
       testData.contactLastName,
     );
     await expect(checkout.inputPhoneNumber).toHaveValue(`+380${testData.phoneNumber}`);
-
     await checkout.selectedDeliveryMethodWarehouse.scrollIntoViewIfNeeded();
     await checkout.selectedDeliveryMethodWarehouse.click();
     await checkout.inputCity.click();
@@ -39,7 +39,6 @@ test.describe('Checkout: guest', () => {
     await checkout.paymentMethodCard.click();
     await expect(checkout.paymentMethodCard).toBeChecked();
     await checkout.buttonCreatedOrder.click();
-    await expect(page).toHaveURL(/^https:\/\/www\.liqpay\.ua\/uk\/checkout\/card\/checkout_/);
     await expect(page).toHaveURL(/^https:\/\/www\.liqpay\.ua\/uk\/checkout\/card\/checkout_/);
   });
 });

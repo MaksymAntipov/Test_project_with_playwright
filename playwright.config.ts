@@ -1,8 +1,17 @@
-// @ts-check
 import { defineConfig, devices } from '@playwright/test';
 import { ENVIRONMENTS, DEFAULT_ENV } from './config/env';
 
+type EnvName = keyof typeof ENVIRONMENTS;
+
+function isEnvName(name: string): name is EnvName {
+  return Object.hasOwn(ENVIRONMENTS, name);
+}
+
 const currentEnv = process.env.ENV || DEFAULT_ENV;
+
+if (!isEnvName(currentEnv)) {
+  throw new Error(`Unknown ENV "${currentEnv}". Available: ${Object.keys(ENVIRONMENTS).join(', ')}`);
+}
 
 const targetBaseURL = ENVIRONMENTS[currentEnv];
 
@@ -22,32 +31,33 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  use: 
-  {
+  use: {
     baseURL: targetBaseURL,
-    userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    userAgent:
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
-    video:'off',
-    screenshot:'off'
+    video: 'off',
+    screenshot: 'off',
   },
 
   /* Configure projects for major browsers */
   projects: [
-    //{name: 'setup', testMatch:'**/*.setup.ts'},
+    { name: 'setup', testMatch: '**/*.setup.ts' },
     {
       name: 'chromium',
-      use: { 
+      use: {
         ...devices['Desktop Chrome'],
         viewport: { width: 1920, height: 1200 },
         // Игнорируем проблемы с SSL/HTTPS сертификатами на dev-стендах
-        ignoreHTTPSErrors: true, 
-        
+        ignoreHTTPSErrors: true,
+
         // Передаем аргументы запуска непосредственно в браузер Chromium
         launchOptions: {
-          args: ['--disable-web-security']
-        }
-      }//, dependencies:['setup']
+          args: ['--disable-web-security'],
+        },
+      },
+      dependencies: ['setup'],
     },
 
     // {
@@ -88,4 +98,3 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
-
