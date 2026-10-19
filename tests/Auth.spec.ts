@@ -1,26 +1,16 @@
-import test, { expect } from '@playwright/test';
+import { test, expect } from '../fixtures/pages';
 import testData from '../helpers/testData.json';
-import { HomePage } from '../pom/pages/HomePage';
-import { Header } from '../pom/pages/Header';
-import { AuthModal } from '../pom/forms/AuthModal';
 
-let homePage: HomePage;
-let header: Header;
-let authModal: AuthModal;
-
-test.beforeEach(async ({ page }) => {
-  homePage = new HomePage(page);
+test.beforeEach(async ({ homePage }) => {
   await homePage.openPage();
-  header = new Header(page);
-  authModal = new AuthModal(page);
 });
 
-test('Authorization success', async () => {
+test('Authorization success', async ({ homePage, header }) => {
   await homePage.login(testData.phoneNumber, testData.validOtp);
   await expect(header.userAvatar).toBeVisible();
 });
 
-test('Authorization fail - wrong otp', async () => {
+test('Authorization fail - wrong otp', async ({ homePage, authModal }) => {
   await homePage.login(testData.phoneNumber, testData.noValidOtp);
   await expect(authModal.errorContainer).toHaveText('Щось неправильно, перевір');
 });

@@ -1,15 +1,12 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../fixtures/pages';
 import testData from '../helpers/testData.json';
 import { Checkout } from '../pom/pages/Checkout';
-import { HomePage } from '../pom/pages/HomePage';
 import { AUTH_USER_PATH_STORAGE_STATE } from '../config/auth';
 
 let checkout: Checkout;
-let homePage: HomePage;
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach(async ({ page, homePage }) => {
   checkout = new Checkout(page);
-  homePage = new HomePage(page);
 
   await homePage.openPage();
   await homePage.addToCartFirstBook();
