@@ -6,5 +6,6 @@
   "validOtp": "1111",
   "noValidOtp": "1122",
   "DeliveryCity": "Дніпро",
-  "Warehouse": "61"
+  "Warehouse": "61",
+  "PaperBook": "58f2e58a-4079-4ff1-8a6f-c14cf36b1ad3"
 }
