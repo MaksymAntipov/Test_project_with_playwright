@@ -2,19 +2,23 @@ import { Page, Locator } from '@playwright/test';
 
 export class Checkout {
   readonly page: Page;
-  public inputPhoneNumber: Locator;
-  public inputEmail: Locator;
-  public inputContactFirstName: Locator;
-  public inputContactLastName: Locator;
-  public selectedDeliveryMethodWarehouse: Locator;
-  public inputCity: Locator;
-  public searchCitylist: Locator;
-  public selectFirstCityInCityList: Locator;
-  public inputWarehouseOrPostomat: Locator;
-  public inputWarehouse: Locator;
-  public selectFirstWarehouseInWarehouseList: Locator;
-  public paymentMethodCard: Locator;
-  public buttonCreatedOrder: Locator;
+  readonly inputPhoneNumber: Locator;
+  readonly inputEmail: Locator;
+  readonly inputContactFirstName: Locator;
+  readonly inputContactLastName: Locator;
+  readonly itemPrice: Locator;
+  readonly totalItemsPrice: Locator;
+  readonly deliveruPrice: Locator;
+  readonly totalOrderPrice: Locator;
+  readonly selectedDeliveryMethodWarehouse: Locator;
+  readonly inputCity: Locator;
+  readonly searchCitylist: Locator;
+  readonly selectFirstCityInCityList: Locator;
+  readonly inputWarehouseOrPostomat: Locator;
+  readonly inputWarehouse: Locator;
+  readonly selectFirstWarehouseInWarehouseList: Locator;
+  readonly paymentMethodCard: Locator;
+  readonly buttonCreatedOrder: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -22,6 +26,10 @@ export class Checkout {
     this.inputEmail = page.locator('//div[@class="relative"]//input[@type="email"]').first();
     this.inputContactFirstName = page.locator('//input[@name="contactInfo.firstName"]');
     this.inputContactLastName = page.locator('//input[@name="contactInfo.lastName"]');
+    this.itemPrice = page.locator('div.flex > span.text-titleLargeBold');
+    this.totalItemsPrice = page.getByText(/на суму/).locator('xpath=following-sibling::span');
+    this.deliveruPrice = page.locator('div.mb-4 > span.text-end');
+    this.totalOrderPrice = page.locator('span.flex > span.text-nowrap');
     this.selectedDeliveryMethodWarehouse = page.getByText('Відділення або поштомат «Нової пошти»');
     this.inputCity = page.getByRole('button', { name: 'Місто' });
     this.searchCitylist = page.getByLabel('Search options');

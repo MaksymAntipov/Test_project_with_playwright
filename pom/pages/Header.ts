@@ -1,9 +1,9 @@
 import { Page, Locator } from '@playwright/test';
 
 export class Header {
-  public iconUserProfile: Locator;
-  public iconCart: Locator;
-  public userAvatar: Locator;
+  readonly iconUserProfile: Locator;
+  readonly iconCart: Locator;
+  readonly userAvatar: Locator;
 
   constructor(page: Page) {
     this.iconUserProfile = page.locator('//button[@aria-label="User profile"]');

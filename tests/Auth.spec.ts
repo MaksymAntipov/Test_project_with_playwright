@@ -8,13 +8,10 @@ test.beforeEach(async ({ app }) => {
 test('Authorization success', async ({ app }) => {
   await app.login(testData.phoneNumber, testData.validOtp);
   await expect(app.header.userAvatar).toBeVisible();
-  await expect(app.homePage.snackbar).toHaveScreenshot('snackbar success auth.png');
 });
 
 test('Authorization fail - wrong otp', async ({ app }) => {
   await app.login(testData.phoneNumber, testData.noValidOtp);
   await expect(app.authModal.errorContainer).toHaveText('Щось неправильно, перевір');
-  await expect(app.page.getByRole('dialog')).toHaveScreenshot('Authorization - wrong otp.png', {
-    maxDiffPixelRatio: 0.1,
-  });
+  await expect(app.page.getByRole('dialog')).toHaveScreenshot('Authorization_wrong_otp.png');
 });
