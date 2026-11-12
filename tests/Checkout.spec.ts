@@ -61,7 +61,7 @@ test.describe('Checkout: authorized user', () => {
     expect(checkoutTotalItemsPrice + checkoutDeliveruPrice).toBe(checkoutTotalOrderPrice);
     await app.checkout.buttonCreatedOrder.click();
     await expect(app.page).toHaveURL(/^https:\/\/www\.liqpay\.ua\/uk\/checkout\/card\/checkout_/);
-    const liqpayTotalPrice = parseInt(await app.checkout.liqpayTotalPrice.innerText());
+    const liqpayTotalPrice = parseInt(await app.liqpay.liqpayTotalPrice.innerText());
     expect(checkoutTotalOrderPrice).toBe(liqpayTotalPrice);
     console.log(`Checkout total price: ${checkoutTotalOrderPrice}, Liqpay total price: ${liqpayTotalPrice}`);
   });
