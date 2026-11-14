@@ -30,7 +30,7 @@ test.describe('Checkout: guest', () => {
     await app.checkout.selectFirstWarehouseInWarehouseList.click();
     await app.checkout.paymentMethodCard.click();
     await expect(app.checkout.paymentMethodCard).toBeChecked();
-    const checkoutDeliveruPrice = parseInt(await app.checkout.deliveruPrice.innerText());
+    const checkoutDeliveruPrice = parseInt(await app.checkout.deliveryPrice.innerText());
     const checkoutTotalOrderPrice = parseInt(await app.checkout.totalOrderPrice.innerText());
     await expect(app.checkout.totalItemsPrice).toHaveText(priceItemInHomePage); //сравнение цены с главной с ценой в блоке "Разом"
     const checkoutTotalItemsPrice = parseInt(await app.checkout.totalItemsPrice.innerText());
@@ -54,7 +54,7 @@ test.describe('Checkout: authorized user', () => {
     await app.checkout.paymentMethodCard.click();
     await expect(app.checkout.paymentMethodCard).toBeChecked();
     await app.checkout.buttonCreatedOrder.click();
-    const checkoutDeliveruPrice = parseInt(await app.checkout.deliveruPrice.innerText());
+    const checkoutDeliveruPrice = parseInt(await app.checkout.deliveryPrice.innerText());
     const checkoutTotalOrderPrice = parseInt(await app.checkout.totalOrderPrice.innerText());
     await expect(app.checkout.totalItemsPrice).toHaveText(priceItemInHomePage); //сравнение цены с главной с ценой в блоке "Разом"
     const checkoutTotalItemsPrice = parseInt(await app.checkout.totalItemsPrice.innerText());

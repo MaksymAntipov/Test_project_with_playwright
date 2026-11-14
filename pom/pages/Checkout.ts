@@ -8,7 +8,7 @@ export class Checkout {
   readonly inputContactLastName: Locator;
   readonly itemPrice: Locator;
   readonly totalItemsPrice: Locator;
-  readonly deliveruPrice: Locator;
+  readonly deliveryPrice: Locator;
   readonly totalOrderPrice: Locator;
   readonly selectedDeliveryMethodWarehouse: Locator;
   readonly inputCity: Locator;
@@ -28,7 +28,7 @@ export class Checkout {
     this.inputContactLastName = page.locator('//input[@name="contactInfo.lastName"]');
     this.itemPrice = page.locator('div.flex > span.text-titleLargeBold');
     this.totalItemsPrice = page.getByText(/на суму/).locator('xpath=following-sibling::span');
-    this.deliveruPrice = page.locator('div.mb-4 > span.text-end');
+    this.deliveryPrice = page.locator('div.mb-4 > span.text-end');
     this.totalOrderPrice = page.locator('span.flex > span.text-nowrap');
     this.selectedDeliveryMethodWarehouse = page.getByText('Відділення або поштомат «Нової пошти»');
     this.inputCity = page.getByRole('button', { name: 'Місто' });
