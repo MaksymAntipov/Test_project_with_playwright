@@ -14,7 +14,7 @@ test('Get book', async ({ request }) => {
   });
 });
 
-test('Get user positive', async ({ request }) => {
+test('Get user with auth token', async ({ request }) => {
   const authorization = new Authorization(request);
   const getToken = await authorization.authorizatioWithPhoneNumber(
     `+380${testData.phoneNumber}`,
@@ -26,4 +26,7 @@ test('Get user positive', async ({ request }) => {
   const responseJson = await getUser.getUser(getToken);
   console.log(responseJson);
   expect(responseJson.code).toBe(200);
+  expect(responseJson.data.item).toMatchObject({
+    uid: expect.any(String),
+  });
 });

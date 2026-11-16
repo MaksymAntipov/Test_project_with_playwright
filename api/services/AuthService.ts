@@ -7,14 +7,14 @@ export default class Authorization {
     this.request = request;
   }
 
-  async authorizatioWithPhoneNumber(phone: string, action: string, code: string) {
+  async authorizatioWithPhoneNumber(phone: string, action: 'verify' | 'send', code?: string) {
     const response = await this.request.post(`https://web-api.dev.mbooks.net/api/v1/auth/phone/`, {
       headers: {
         'SKIP-SIGNATURE': '1',
       },
       data: {
         phone: phone,
-        action: action,
+        action,
         code: code,
       },
     });
