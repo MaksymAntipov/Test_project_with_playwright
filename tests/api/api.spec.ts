@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 import testData from '../../helpers/testData.json';
-import BookService from '../../helpers/services/BookService';
-import GetUser from '../../helpers/services/GetUserService';
-import Authorization from '../../helpers/services/AuthService';
+import BookService from '../../api/services/BookService';
+import GetUser from '../../api/services/GetUserService';
+import Authorization from '../../api/services/AuthService';
 
 test('Get book', async ({ request }) => {
   const bookService = new BookService(request);
