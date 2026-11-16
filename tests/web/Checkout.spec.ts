@@ -1,6 +1,6 @@
-import { test, expect } from '../fixtures/pages';
-import testData from '../helpers/testData.json';
-import { AUTH_USER_PATH_STORAGE_STATE } from '../config/auth';
+import { test, expect } from '../../fixtures/pages';
+import testData from '../../helpers/testData.json';
+import { AUTH_USER_PATH_STORAGE_STATE } from '../../config/auth';
 
 test.beforeEach(async ({ app }) => {
   await app.homePage.openPage();
