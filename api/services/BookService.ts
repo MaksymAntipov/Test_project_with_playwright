@@ -1,5 +1,5 @@
 import { APIRequestContext } from '@playwright/test';
-import testData from '../testData.json';
+import testData from '../../helpers/testData.json';
 
 export default class getAllBooks {
   private request: APIRequestContext;
