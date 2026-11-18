@@ -44,7 +44,9 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    { name: 'setup', testMatch: '**/*.setup.ts' },
+    { name: 'setup', testMatch: '**/setup/**.setup.ts' },
+    { name: 'api', testMatch: '**/api/**api.spec.ts' },
+
     {
       name: 'chromium',
       use: {
