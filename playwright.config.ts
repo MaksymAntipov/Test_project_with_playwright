@@ -48,7 +48,7 @@ export default defineConfig({
     { name: 'api', testMatch: '**/api/**api.spec.ts' },
 
     {
-      name: 'chromium',
+      name: 'e2e',
       use: {
         ...devices['Desktop Chrome'],
         viewport: { width: 1920, height: 1200 },

@@ -1,5 +1,5 @@
-import { test, expect } from '../fixtures/pages';
-import testData from '../helpers/testData.json';
+import { test, expect } from '../../fixtures/pages';
+import testData from '../../helpers/testData.json';
 
 test.beforeEach(async ({ app }) => {
   await app.homePage.openPage();

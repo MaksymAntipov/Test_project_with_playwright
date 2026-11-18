@@ -1,6 +1,6 @@
 import { test, expect } from '../../fixtures/pages';
 import testData from '../../helpers/testData.json';
-import { AUTH_USER_PATH_STORAGE_STATE } from '../../config/auth';
+import { API_TOKENS } from '../../config/auth';
 
 test.beforeEach(async ({ app }) => {
   await app.homePage.openPage();
@@ -44,7 +44,7 @@ test.describe('Checkout: guest', () => {
 });
 
 test.describe('Checkout: authorized user', () => {
-  test.use({ storageState: AUTH_USER_PATH_STORAGE_STATE });
+  test.use({ storageState: API_TOKENS });
 
   test('PaymentCartWithAuth', async ({ app }) => {
     const priceItemInHomePage = await app.homePage.firstBookCardPrice.innerText();
